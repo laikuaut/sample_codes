@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+    python2:
+        image: python:${PYTHON2_VERSION}
+        command: python main.py
+        volumes:
+            - ./python2:${DOCKER_SRC_DIR}
+        working_dir: ${DOCKER_SRC_DIR}
+    python3:
+        image: python:${PYTHON3_VERSION}
+        command: python main.py
+        volumes:
+            - ./python3:${DOCKER_SRC_DIR}
+        working_dir: ${DOCKER_SRC_DIR}
+    python-project:
+        build:
+            context: ./${PROJECT_NAME}
+        command: python main.py
+        volumes:
+            - ./${PROJECT_NAME}:${DOCKER_SRC_DIR}
+        working_dir: ${DOCKER_SRC_DIR}
