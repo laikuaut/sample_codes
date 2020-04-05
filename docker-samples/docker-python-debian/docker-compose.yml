@@ -25,6 +25,10 @@ services:
         build:
             context: ./${PROJECT_NAME}
             dockerfile: Dockerfile.dev
+            args:
+                USER_ID: 1000
+                GROUP_ID: 1000
+                USER_NAME: dev
         volumes:
             - ./${PROJECT_NAME}:${DOCKER_SRC_DIR}
             - ${HOME}/.vscode-server:/home/${USER_NAME}/.vscode-server
@@ -32,6 +36,6 @@ services:
         tty: true
         ports:
             - "${LOCAL_SSH_PORT}:22"
-        depends_on:
-            - python-project
+#        depends_on:
+#            - python-project
         hostname: "${PROJECT_NAME}-dev"

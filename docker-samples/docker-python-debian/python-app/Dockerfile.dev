@@ -1,10 +1,9 @@
 FROM python-app
 
 # 一般ユーザ名を設定
-ENV USER_NAME=dev
-ENV USER_ID=1000
-ENV GROUP_ID=1000
-ENV PASSWD="dev123"
+ARG USER_NAME
+ARG USER_ID
+ARG GROUP_ID
 
 # developerユーザを作成し、sudoを使用できるようにする
 RUN apt-get update
