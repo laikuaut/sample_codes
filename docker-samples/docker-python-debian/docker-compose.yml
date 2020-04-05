@@ -17,6 +17,21 @@ services:
         build:
             context: ./${PROJECT_NAME}
         command: python main.py
+        image: ${PROJECT_NAME}
         volumes:
             - ./${PROJECT_NAME}:${DOCKER_SRC_DIR}
         working_dir: ${DOCKER_SRC_DIR}
+    python-project-dev:
+        build:
+            context: ./${PROJECT_NAME}
+            dockerfile: Dockerfile.dev
+        volumes:
+            - ./${PROJECT_NAME}:${DOCKER_SRC_DIR}
+            - ${HOME}/.vscode-server:/home/${USER_NAME}/.vscode-server
+        working_dir: ${DOCKER_SRC_DIR}
+        tty: true
+        ports:
+            - "${LOCAL_SSH_PORT}:22"
+        depends_on:
+            - python-project
+        hostname: "${PROJECT_NAME}-dev"
