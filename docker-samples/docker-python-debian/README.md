@@ -100,7 +100,7 @@ $ mv python-app [プロジェクト名]
 ```Dockerfile
 FROM python:[Pythonバージョン]
 ```
-4．`[プロジェクト名]/requirements.txt`に必要なライブラリを記載
+4. `[プロジェクト名]/requirements.txt`に必要なライブラリを記載
 5. `[プロジェクト名]/main.py`にプログラムを書く。
 vscodeで開発する場合は、python-project-devサービスを利用。
 6. Dockerイメージをビルドする
